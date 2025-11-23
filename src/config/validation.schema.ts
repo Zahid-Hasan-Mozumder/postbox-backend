@@ -8,6 +8,9 @@ export const validationSchema = Joi.object({
   // App Config
   PORT: Joi.number().default(3000),
 
+  // JWT Config
+  JWT_SECRET: Joi.string().required(),
+
   // Database Config
   DATABASE_URL: Joi.string().required(),
 });

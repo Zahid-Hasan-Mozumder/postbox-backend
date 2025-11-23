@@ -5,11 +5,19 @@ import { ConfigService as NestConfigService } from '@nestjs/config';
 export class ConfigService {
   constructor(private readonly configService: NestConfigService) {}
 
+  get<T = any>(key: string): T {
+    return this.configService.get<T>(key)!;
+  }
+
   get port(): number {
-    return this.configService.get<number>('port')!;
+    return this.get<number>('PORT');
   }
 
   get databaseUrl(): string {
-    return this.configService.get<string>('database.url')!;
+    return this.get<string>('DATABASE_URL');
+  }
+
+  get jwtSecret(): string {
+    return this.get<string>('JWT_SECRET');
   }
 }
